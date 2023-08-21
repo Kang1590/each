@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+	<meta charset='utf-8'>
+	<title>each()메소드로 스크롤을 내리면 진행바가 진행된다</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+			
+			$(document).scroll(function(){
+				//console.log(  $(document).scrollTop()  );
+				if(  $(document).scrollTop() > 200 ){
+					$("#skill progress").each(function( event ){
+						let i = $(this);
+						setTimeout( x , event * 200 );
+						function x(){
+							i.animate({value : parseInt(i.text()) });
+						}
+					});
+				}
+			});
+	});	////////////all end
+	</script>
+	<style>
+		#skill {max-width:500px; border:1px solid red; margin:auto; padding:10px; border-radius:20px; overflow:hidden;}
+		h1 		{text-align:center; margin-bottom:1000px;}		
+		#skill label 	{display:inline-block; width:28%;}
+		#skill progress {display:inline-block; width:70%;}
+	</style>	
+</head>
+<body>
+	<section id='skill'>
+		<h1>each()메소드로 스크롤을 내리면 진행바가 진행된다</h1>
+		<label for='photoshop'>포토샵</label>
+		<progress id='photoshop' value='0' max='100'>90%</progress><br>
+		<label for='illust'>일러스트</label>
+		<progress id='illust' value='0' max='100'>95%</progress><br>
+		<label for='css'>HTML/CSS</label>
+		<progress id='css' value='0' max='100'>85%</progress><br>
+		<label for='jQuery'>Javascript/jQuery</label>
+		<progress id='jQuery' value='0' max='100'>80%</progress>
+	</section>
+</body>
+</html>
